@@ -7,7 +7,7 @@
         "eslint:recommended",
         "prettier",
         "plugin:react/recommended",
-        "plagin:react/jsx-runtime"
+        "plugin:react/jsx-runtime"
     ],
     "parserOptions": {
         "ecmaFeatures": {"jsx": true},
