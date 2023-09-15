@@ -1,3 +1,65 @@
+@keyframes loading {
+  from {
+    background-color: #313131;
+  }
+
+  50% {
+    background-color: #464545;
+  }
+
+  to {
+    background-color: #313131;
+  }
+} 
+.track__skeleton {
+  width: 51px;
+  height: 51px;
+  margin-right: 17px;
+  padding: 16px;
+  animation: loading 2s infinite;
+}
+
+.track__title_skeleton {
+  width: 356px;
+  height: 19px;
+  animation: loading 2s infinite;
+}
+
+.track__author_skeleton {
+  width: 271px;
+  height: 19px;
+  animation: loading 2s infinite;
+}
+
+.track__album_skeleton {
+  width: 245px;
+  height: 19px;
+  animation: loading 2s infinite;
+}
+
+.track__play_skeleton {
+  width: 60px;
+  height: 15px;
+  animation: loading 2s infinite;
+}
+
+.sidebar__skeleton {
+  width: 250px;
+  height: 150px;
+  animation: loading 2s infinite;
+}
+
+
+@font-face {
+  font-family: "StratosSkyeng";
+  src: local("StratosSkyeng"), local("StratosSkyeng"),
+    url("../public/fonts/StratosSkyeng.woff2") format("woff2"),
+    url("../public/fonts/StratosSkyeng.woff") format("woff");
+  /* url("../public/fonts/StratosSkyeng.ttf") format("truetype"); */
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -25,16 +87,6 @@ button,
 
 ul li {
   list-style: none;
-}
-
-@font-face {
-  font-family: "StratosSkyeng";
-  src: local("StratosSkyeng"), local("StratosSkyeng"),
-    url("../public/fonts/StratosSkyeng.woff2") format("woff2"),
-    url("../public/fonts/StratosSkyeng.woff") format("woff");
-  /* url("../public/fonts/StratosSkyeng.ttf") format("truetype"); */
-  font-weight: 400;
-  font-style: normal;
 }
 
 html,

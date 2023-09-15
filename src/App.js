@@ -6,8 +6,20 @@ import Serching from './components/Searching'
 import SidebarPersonality from './components/PersonalSidebar'
 import SidebarPlaylist from './components/Sidebar'
 import Playingbar from './components/Playingbar'
+import { useEffect, useState } from 'react'
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const isLoading = () => setLoading(!loading);
+
+  useEffect(() => {
+    const timeLoading = setTimeout(() => {
+      isLoading()
+    }, 5000);
+
+    return () => {clearTimeout(timeLoading)}
+  }, [])
+
   return (
     <div className="wrapper">
       <div className="container">
@@ -24,52 +36,59 @@ function App() {
                   author="minthaze"
                   album="Captivating"
                   timetrack="2:22"
+                  load={loading}
                 />
                 <PlaylistItem
-                  trackname="Knives n Cherries"
-                  author="minthaze"
-                  album="Captivating"
-                  timetrack="2:22"
+                  trackname="I'm Fire"
+                  author="Ali Bakgor"
+                  album="I'm Fire"
+                  timetrack="4:22"
+                  load={loading}
                 />
                 <PlaylistItem
-                  trackname="Knives n Cherries"
-                  author="minthaze"
-                  album="Captivating"
-                  timetrack="2:22"
+                  trackname="Non Stop"
+                  author="Psychopath"
+                  album="Non Stop"
+                  timetrack="3:12"
+                  load={loading}
                 />
                 <PlaylistItem
-                  trackname="Knives n Cherries"
-                  author="minthaze"
-                  album="Captivating"
-                  timetrack="2:22"
+                  trackname="Guilt"
+                  author="Nero"
+                  album="Welcome Reality"
+                  timetrack="2:46"
+                  load={loading}
                 />
                 <PlaylistItem
-                  trackname="Knives n Cherries"
-                  author="minthaze"
-                  album="Captivating"
-                  timetrack="2:22"
+                  trackname="Morena"
+                  author="Tom Boxer"
+                  album="Soundz Made in Romania"
+                  timetrack="2:54"
+                  load={loading}
                 />
                 <PlaylistItem
-                  trackname="Knives n Cherries"
-                  author="minthaze"
-                  album="Captivating"
+                  trackname="How Deep Is Your Love"
+                  author="Calvin Harris, Disciples"
+                  album="How Deep Is Your Love"
                   timetrack="2:22"
+                  load={loading}
                 />
                 <PlaylistItem
-                  trackname="Knives n Cherries"
-                  author="minthaze"
-                  album="Captivating"
+                  trackname="Elektro"
+                  author="Dynoro, Outwork, Mr. Gee"
+                  album="Elektro"
                   timetrack="2:22"
+                  load={loading}
                 />
               </div>
             </div>
           </div>
           <div className="main__sidebar sidebar">
             <SidebarPersonality userName="Sergey.Ivanov" />
-            <SidebarPlaylist />
+            <SidebarPlaylist load={loading}/>
           </div>
         </main>
-        <Playingbar />
+        <Playingbar load={loading}/>
         <footer className="footer"></footer>
       </div>
     </div>

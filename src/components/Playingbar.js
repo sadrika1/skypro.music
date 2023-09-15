@@ -1,4 +1,4 @@
-export default function Playingbar() {
+export default function Playingbar(props) {
   return (
     <div className="bar">
       <div className="bar__content">
@@ -41,14 +41,18 @@ export default function Playingbar() {
                   </svg>
                 </div>
                 <div className="track-play__author">
-                  <a className="track-play__author-link" href="http://">
-                    Ты та...
-                  </a>
+                  {props.load ? (
+                    <div className="track__play_skeleton"></div>
+                  ) : (
+                  <a className="track-play__author-link" href="http://">Ты та...</a>
+                  )}
                 </div>
                 <div className="track-play__album">
-                  <a className="track-play__album-link" href="http://">
-                    Баста
-                  </a>
+                {props.load ? (
+                    <div className="track__play_skeleton"></div>
+                  ) : (
+                  <a className="track-play__album-link" href="http://">Баста</a>
+                  )}
                 </div>
               </div>
 
