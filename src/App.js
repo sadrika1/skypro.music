@@ -65,11 +65,11 @@ function App() {
             </div>
           </div>
           <div className="main__sidebar sidebar">
-          <SidebarPersonality userName="Sergey.Ivanov"/>
-          <SidebarPlaylist/>
+            <SidebarPersonality userName="Sergey.Ivanov" />
+            <SidebarPlaylist />
           </div>
         </main>
-        <Playingbar/>
+        <Playingbar />
         <footer className="footer"></footer>
       </div>
     </div>
