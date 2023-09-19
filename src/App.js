@@ -27,7 +27,7 @@ function App() {
           <Navigation />
           <div className="main__centerblock centerblock">
             <Serching />
-            <h2 className="centerblock__h2">Треки</h2>
+            
             <div className="centerblock__content">
               <SongsInfo />
               <div className="content__playlist playlist">
