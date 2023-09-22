@@ -1,11 +1,13 @@
+import * as S from './playingbar.styles'
+
 export default function Playingbar(props) {
   return (
-    <div className="bar">
-      <div className="bar__content">
-        <div className="bar__player-progress"></div>
-        <div className="bar__player-block">
-          <div className="bar__player player">
-            <div className="player__controls">
+    <S.Bar>
+      <S.BarContent>
+        <S.BarPlayerBProgress></S.BarPlayerBProgress>
+        <S.BarPlayerBlock>
+          <S.BarPlayer>
+            <S.BarPLayerControls>
               <div className="player__btn-prev">
                 <svg className="player__btn-prev-svg" alt="prev">
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
@@ -31,7 +33,7 @@ export default function Playingbar(props) {
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                 </svg>
               </div>
-            </div>
+            </S.BarPLayerControls>
 
             <div className="player__track-play track-play">
               <div className="track-play__contain"> 
@@ -69,25 +71,25 @@ export default function Playingbar(props) {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="bar__volume-block volume">
-            <div className="volume__content">
-              <div className="volume__image">
-                <svg className="volume__svg" alt="volume">
+          </S.BarPlayer>
+          <S.VolumeBlock>
+            <S.VolumeContent>
+              <S.VolumeImage>
+                <S.VolumeSVG alt="volume">
                   <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
-                </svg>
-              </div>
-              <div className="volume__progress _btn">
-                <input
-                  className="volume__progress-line _btn"
+                </S.VolumeSVG>
+              </S.VolumeImage>
+              <S.VolumeProgress className="_btn">
+                <S.VolumeProgressLine
+                  className="_btn"
                   type="range"
                   name="range"
                 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+              </S.VolumeProgress>
+            </S.VolumeContent>
+          </S.VolumeBlock>
+        </S.BarPlayerBlock>
+      </S.BarContent>
+    </S.Bar>
   )
 }

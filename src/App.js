@@ -1,11 +1,11 @@
 import './App.css'
-import PlaylistItem from './components/PlaylistItem'
-import Navigation from './components/Navigation'
+import PlaylistItem from './components/playlistitems/PlaylistItem'
+import Navigation from './components/nav/Navigation'
 import SongsInfo from './components/SongsInfo'
-import Serching from './components/Searching'
-import SidebarPersonality from './components/PersonalSidebar'
-import SidebarPlaylist from './components/Sidebar'
-import Playingbar from './components/Playingbar'
+import Serching from './components/search/Searching'
+import SidebarPersonality from './components/sidebars/PersonalSidebar'
+import SidebarPlaylist from './components/sidebars/Sidebar'
+import Playingbar from './components/playingbar/Playingbar'
 import { useEffect, useState } from 'react'
 
 function App() {
