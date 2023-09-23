@@ -7,7 +7,7 @@ export default function PlaylistItem(props) {
 
         <S.TrackTitle>
           {props.load ? (
-            <div className="track__skeleton"></div> // add here
+            <S.TrackImageLoad></S.TrackImageLoad> // add here
           ) : (
             <S.TrackTitleImage >
               <S.TrackTitleSVG alt="music">
@@ -16,9 +16,9 @@ export default function PlaylistItem(props) {
             </S.TrackTitleImage>
           )}
 
-        <div className="track__title-text"> 
+        <div> 
           {props.load ? (
-            <div className="track__title_skeleton"></div>
+            <S.TrackNameLoad></S.TrackNameLoad>
           ) : (
             <S.TrackTitleLink href="http://">{props.trackname}
               <span className="track__title-span"></span>
@@ -28,7 +28,7 @@ export default function PlaylistItem(props) {
       </S.TrackTitle>
         <S.TrackAuthor>
           {props.load ? (
-            <div className="track__author_skeleton"></div>
+            <S.TrackAuthorLoad></S.TrackAuthorLoad>
           ) : (
             <S.TrackAuthorLink href="http://">{props.author}
             </S.TrackAuthorLink>
@@ -37,7 +37,7 @@ export default function PlaylistItem(props) {
 
         <S.TrackAlbum>
           {props.load ? (
-            <div className="track__album_skeleton"></div>
+            <S.TrackAlbumLoad></S.TrackAlbumLoad>
           ) : (
             <S.TrackAlbumLink href="http://">{props.album}
             </S.TrackAlbumLink>

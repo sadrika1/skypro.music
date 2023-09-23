@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Dropdown = styled.div`
   position: absolute;
+  box-sizing: border-box;
   width: 245px;
   height: 305px;
   color: #ffffff;
@@ -11,22 +12,21 @@ export const Dropdown = styled.div`
   border-radius: 15px;
   margin-top: 15px;
   margin-left: -15px;
-  overflow: auto;
 `
-// .dropdown__item:hover {
-//   text-decoration: underline;
-//   color: #B672FF;
-// }
 
 export const DropdownItem = styled.li`
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s;
+  list-style-type: none;
+  margin-left: -30px;
+
+  &:hover {
+    text-decoration: underline;
+    color: #B672FF;
+  }
 `
-// .dropdown__item:hover {
-//   text-decoration: underline;
-//   color: #B672FF;
-// }
+
 
 export const FiltersBlock = styled.div`
   display: flex;
@@ -42,15 +42,8 @@ export const CentroBlockSearch = styled.div`
   width: 100%;
   border-bottom: 1px solid #4e4e4e;
   margin-bottom: 51px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 `
 
@@ -71,8 +64,6 @@ export const SearchSVG = styled.svg`
   fill: transparent;
 `
 export const SearchInput = styled.input`
-  -webkit-box-flex: 100;
-  -ms-flex-positive: 100;
   flex-grow: 100;
   background-color: transparent;
   border: none;
@@ -82,6 +73,14 @@ export const SearchInput = styled.input`
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
+
+  & placeholder {
+    background-color: transparent;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
 `
 
 export const FilterButton = styled.div`
@@ -94,4 +93,9 @@ export const FilterButton = styled.div`
   padding: 6px 20px;
   margin-right: 8px;
   cursor: pointer;
+
+  &:hover {
+    border-color: #ad61ff;
+    color: #ad61ff;
+  }
 `

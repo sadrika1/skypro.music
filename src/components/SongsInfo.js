@@ -1,67 +1,77 @@
+import styled from 'styled-components'
 
 export default function SongsInfo() {
-    return (
-        <div className="content__title playlist-title">
-        <div className="playlist-title__col col01">ТРЕК</div>
-        <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-        <div className="playlist-title__col col03">АЛЬБОМ</div>
-        <div className="playlist-title__col col04">
-          <svg className="playlist-title__svg" alt="time">
-            <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
-          </svg>
-        </div>
-      </div>
-    )
+  return (
+    <PlaylistTitle>
+      <PlaylistCol_1 >ТРЕК</PlaylistCol_1>
+      <PlaylistCol_2 >ИСПОЛНИТЕЛЬ</PlaylistCol_2>
+      <PlaylistCol_3 >АЛЬБОМ</PlaylistCol_3>
+      <PlaylistCol_4>
+        <svg alt="time">
+          <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
+        </svg>
+      </PlaylistCol_4>
+    </PlaylistTitle>
+  )
 }
 
-// .content__title {
-//   display: -webkit-box;
-//   display: -ms-flexbox;
-//   display: flex;
-//   -webkit-box-orient: horizontal;
-//   -webkit-box-direction: normal;
-//   -ms-flex-direction: row;
-//   flex-direction: row;
-//   -webkit-box-align: center;
-//   -ms-flex-align: center;
-//   align-items: center;
-//   -webkit-box-pack: justify;
-//   -ms-flex-pack: justify;
-//   justify-content: space-between;
-//   margin-bottom: 24px;
-// }
+const PlaylistTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+`
 
+const PlaylistCol_1 = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  color: #696969;
+  text-transform: uppercase;
+  width: 447px;
+`
 
-// .playlist-title__col {
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 14px;
-//   line-height: 24px;
-//   letter-spacing: 2px;
-//   color: #696969;
-//   text-transform: uppercase;
-// }
+const PlaylistCol_2 = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  color: #696969;
+  text-transform: uppercase;
+  width: 321px;
+`
 
-// .playlist-title__svg {
-//   width: 12px;
-//   height: 12px;
-//   fill: transparent;
-//   stroke: #696969;
-// }
+const PlaylistCol_3 = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  color: #696969;
+  text-transform: uppercase;
+  width: 245px;
+`
 
-// .col01 {
-//   width: 447px;
-// }
+const PlaylistCol_4 = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  color: #696969;
+  text-transform: uppercase;
+  width: 60px;
+  text-align: end;
 
-// .col02 {
-//   width: 321px;
-// }
+  & svg {
+    width: 12px;
+    height: 12px;
+    fill: transparent;
+    stroke: #696969;
+  }
+`
 
-// .col03 {
-//   width: 245px;
-// }
-
-// .col04 {
-//   width: 60px;
-//   text-align: end;
-// }

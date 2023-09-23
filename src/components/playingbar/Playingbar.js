@@ -1,3 +1,4 @@
+//import { ThemeProvider } from 'styled-components'
 import * as S from './playingbar.styles'
 
 export default function Playingbar(props) {
@@ -7,80 +8,82 @@ export default function Playingbar(props) {
         <S.BarPlayerBProgress></S.BarPlayerBProgress>
         <S.BarPlayerBlock>
           <S.BarPlayer>
+
             <S.BarPLayerControls>
-              <div className="player__btn-prev">
-                <svg className="player__btn-prev-svg" alt="prev">
+              {/* buttons on player */}
+              <S.ButtonPrev>
+                <svg alt="prev">
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                 </svg>
-              </div>
-              <div className="player__btn-play _btn">
-                <svg className="player__btn-play-svg" alt="play">
+              </S.ButtonPrev>
+              <S.ButtonPlay>
+                <svg alt="play">
                   <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
                 </svg>
-              </div>
-              <div className="player__btn-next">
-                <svg className="player__btn-next-svg" alt="next">
+              </S.ButtonPlay>
+              <S.ButtonNext>
+                <svg alt="next">
                   <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
                 </svg>
-              </div>
-              <div className="player__btn-repeat _btn-icon">
-                <svg className="player__btn-repeat-svg" alt="repeat">
+              </S.ButtonNext>
+              <S.ButtonRepeat>
+                <svg alt="repeat">
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
                 </svg>
-              </div>
-              <div className="player__btn-shuffle _btn-icon">
-                <svg className="player__btn-shuffle-svg" alt="shuffle">
+              </S.ButtonRepeat>
+              <S.ButtonShuffle>
+                <svg alt="shuffle">
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                 </svg>
-              </div>
+              </S.ButtonShuffle>
             </S.BarPLayerControls>
 
-            <div className="player__track-play track-play">
-              <div className="track-play__contain"> 
-                <div className="track-play__image">
-                  <svg className="track-play__svg" alt="music">
+            <S.PlayerTrack>
+              <S.PlayerTrackContain> 
+                <S.PlayerTrackImage>
+                  <svg alt="music">
                     <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                   </svg>
-                </div>
-                <div className="track-play__author">
+                </S.PlayerTrackImage>
+                <S.TrackPlayName>
                   {props.load ? (
-                    <div className="track__play_skeleton"></div>
+                    <S.TrackPlayLoad></S.TrackPlayLoad>
                   ) : (
-                  <a className="track-play__author-link" href="http://">Ты та...</a>
+                  <a href="http://">Ты та...</a>
                   )}
-                </div>
-                <div className="track-play__album">
+                </S.TrackPlayName>
+                <S.TrackPlayAuthor>
                 {props.load ? (
-                    <div className="track__play_skeleton"></div>
+                    <S.TrackPlayLoad></S.TrackPlayLoad>
                   ) : (
-                  <a className="track-play__album-link" href="http://">Баста</a>
+                  <a href="http://">Баста</a>
                   )}
-                </div>
-              </div>
+                </S.TrackPlayAuthor>
+              </S.PlayerTrackContain>
 
-              <div className="track-play__like-dis">
-                <div className="track-play__like _btn-icon">
-                  <svg className="track-play__like-svg" alt="like">
+              <S.PlayerLikeButtons>
+                <S.LikeButtonIcon>
+                  <svg alt="like">
                     <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                   </svg>
-                </div>
-                <div className="track-play__dislike _btn-icon">
-                  <svg className="track-play__dislike-svg" alt="dislike">
+                </S.LikeButtonIcon>
+                <S.DislikeButtonIcon>
+                  <svg alt="dislike">
                     <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
                   </svg>
-                </div>
-              </div>
-            </div>
+                </S.DislikeButtonIcon>
+              </S.PlayerLikeButtons>
+            </S.PlayerTrack>
           </S.BarPlayer>
           <S.VolumeBlock>
             <S.VolumeContent>
               <S.VolumeImage>
-                <S.VolumeSVG alt="volume">
+                <svg alt="volume">
                   <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
-                </S.VolumeSVG>
+                </svg>
               </S.VolumeImage>
               <S.VolumeProgress className="_btn">
-                <S.VolumeProgressLine
+                <input
                   className="_btn"
                   type="range"
                   name="range"

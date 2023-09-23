@@ -1,4 +1,5 @@
-import './App.css'
+// import './App.css'
+import * as S from './app.styles'
 import PlaylistItem from './components/playlistitems/PlaylistItem'
 import Navigation from './components/nav/Navigation'
 import SongsInfo from './components/SongsInfo'
@@ -21,16 +22,16 @@ function App() {
   }, [])
 
   return (
-    <div className="wrapper">
-      <div className="container">
-        <main className="main">
+    <S.Wrapper>
+      <S.Container>
+        <S.Main>
           <Navigation />
-          <div className="main__centerblock centerblock">
+          <S.MainCentroBlock>
             <Serching />
             
-            <div className="centerblock__content">
+            <S.CentroBlockContent>
               <SongsInfo />
-              <div className="content__playlist playlist">
+              <S.PlaylistContent>
                 <PlaylistItem
                   trackname="Knives n Cherries"
                   author="minthaze"
@@ -80,18 +81,18 @@ function App() {
                   timetrack="2:22"
                   load={loading}
                 />
-              </div>
-            </div>
-          </div>
-          <div className="main__sidebar sidebar">
+              </S.PlaylistContent>
+            </S.CentroBlockContent>
+          </S.MainCentroBlock>
+          <S.MainSidebar>
             <SidebarPersonality userName="Sergey.Ivanov" />
             <SidebarPlaylist load={loading}/>
-          </div>
-        </main>
+          </S.MainSidebar>
+        </S.Main>
         <Playingbar load={loading}/>
-        <footer className="footer"></footer>
-      </div>
-    </div>
+        {/* <footer className="footer"></footer> */}
+      </S.Container>
+    </S.Wrapper>
   )
 }
 

@@ -23,17 +23,16 @@ export const LogoImage = styled.img`
 export const NavBurger = styled.div`
   width: 20px;
   height: 36px;
-  padding: 13px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  padding: 5px 0;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  list-style: none;
+  
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const BurgerLine = styled.span`
@@ -54,6 +53,7 @@ export const MenuList = styled.ul`
 export const MenuItem = styled.li`
   padding: 5px 0;
   margin-bottom: 16px;
+  list-style-type: none;
 `
 
 export const MenuLink = styled.a`
@@ -61,4 +61,11 @@ export const MenuLink = styled.a`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+  text-decoration: none;
+  font-family: 'StratosSkyeng', sans-serif;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `
