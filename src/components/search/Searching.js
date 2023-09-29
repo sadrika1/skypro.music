@@ -45,7 +45,7 @@ const Serching = () => {
           <S.Dropdown>
             <ul>
               {list.map((item) => {
-                return <S.DropdownItem>{item}</S.DropdownItem>
+                return <S.DropdownItem key={item}>{item}</S.DropdownItem>
               })}
             </ul>
           </S.Dropdown>
