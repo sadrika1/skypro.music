@@ -69,7 +69,7 @@ export const TrackAuthorLink = styled.a`
 export const TrackAlbum = styled.div`
   width: 245px;
 `
-export const TrackAlbumLink = styled.a`
+export const TrackAlbumLink = styled.span`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

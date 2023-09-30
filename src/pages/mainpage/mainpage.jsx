@@ -9,15 +9,17 @@ import Playingbar from '../../components/playingbar/Playingbar'
 import { useEffect, useState } from 'react'
 
 export function MainPage() {
-  const [loading, setLoading] = useState(true);
-  const isLoading = () => setLoading(!loading);
+  const [loading, setLoading] = useState(true)
+  const isLoading = () => setLoading(!loading)
 
   useEffect(() => {
     const timeLoading = setTimeout(() => {
       isLoading()
-    }, 5000);
+    }, 1000)
 
-    return () => {clearTimeout(timeLoading)}
+    return () => {
+      clearTimeout(timeLoading)
+    }
   }, [])
 
   return (
@@ -27,7 +29,6 @@ export function MainPage() {
           <Navigation />
           <S.MainCentroBlock>
             <Serching />
-            
             <S.CentroBlockContent>
               <SongsInfo />
               <S.PlaylistContent>
@@ -85,13 +86,12 @@ export function MainPage() {
           </S.MainCentroBlock>
           <S.MainSidebar>
             <SidebarPersonality userName="Sergey.Ivanov" />
-            <SidebarPlaylist load={loading}/>
+            <SidebarPlaylist load={loading} />
           </S.MainSidebar>
         </S.Main>
-        <Playingbar load={loading}/>
+        <Playingbar load={loading} />
         {/* <footer className="footer"></footer> */}
       </S.Container>
     </S.Wrapper>
   )
 }
-

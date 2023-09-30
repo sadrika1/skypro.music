@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
 import * as S from './navigation.styles'
 
-export default function Navigation() {
+ const Navigation = () => {
   const [menuActive, setMenuActive] = useState(false) // по дефолту меню закрыто
   const menuClose = () => {
     setMenuActive(!menuActive)
@@ -21,17 +23,19 @@ export default function Navigation() {
         <S.NavMenu>
           <S.MenuList>
             <S.MenuItem >
-              <S.MenuLink href="#">Главное</S.MenuLink>
+              <Link to="/home"><S.MenuLink>Главная</S.MenuLink></Link>
             </S.MenuItem>
             <S.MenuItem >
-              <S.MenuLink href="#" >Мой плейлист</S.MenuLink>
+              <Link to="/myplaylist"><S.MenuLink>Мой плейлист</S.MenuLink></Link>
             </S.MenuItem>
             <S.MenuItem >
-              <S.MenuLink href="../signin.html">Войти</S.MenuLink>
+              <Link to="/login"><S.MenuLink>Выйти</S.MenuLink></Link>
             </S.MenuItem>
           </S.MenuList>
         </S.NavMenu>
       )}
     </S.MainNav>
   )
-}
+};
+
+export default Navigation;

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import * as S from './sidebar.styled'
 
 export default function SidebarPlaylist(props) {
@@ -5,31 +6,37 @@ export default function SidebarPlaylist(props) {
     <S.SidebarBlock>
       <S.SidebarList>
         <S.SidebarItem>
-          {props.load ? (
-            <S.SidebarLoad></S.SidebarLoad>
-          ) : (
-            <S.SidebarLink href="#">
-              <S.SidebarImage src="img/playlist01.png" alt="day's playlist" />
-            </S.SidebarLink>
-          )}
+          <Link to="/playlistpage/1">
+            {props.load ? (
+              <S.SidebarLoad></S.SidebarLoad>
+            ) : (
+              <S.SidebarLink>
+                <S.SidebarImage src="img/playlist01.png" alt="day's playlist" />
+              </S.SidebarLink>
+            )}
+          </Link>
         </S.SidebarItem>
         <S.SidebarItem>
-          {props.load ? (
-            <S.SidebarLoad></S.SidebarLoad>
-          ) : (
-            <S.SidebarLink href="#">
-              <S.SidebarImage src="img/playlist02.png" alt="day's playlist" />
-            </S.SidebarLink>
-          )}
+          <Link to="/playlistpage/2">
+            {props.load ? (
+              <S.SidebarLoad></S.SidebarLoad>
+            ) : (
+              <S.SidebarLink>
+                <S.SidebarImage src="img/playlist02.png" alt="day's playlist" />
+              </S.SidebarLink>
+            )}
+          </Link>
         </S.SidebarItem>
         <S.SidebarItem>
-          {props.load ? (
-            <S.SidebarLoad></S.SidebarLoad>
-          ) : (
-            <S.SidebarLink href="#">
-              <S.SidebarImage src="img/playlist03.png" alt="day's playlist" />
-            </S.SidebarLink>
-          )}
+          <Link to="/playlistpage/3">
+            {props.load ? (
+              <S.SidebarLoad></S.SidebarLoad>
+            ) : (
+              <S.SidebarLink>
+                <S.SidebarImage src="img/playlist03.png" alt="day's playlist" />
+              </S.SidebarLink>
+            )}
+          </Link>
         </S.SidebarItem>
       </S.SidebarList>
     </S.SidebarBlock>
