@@ -7,6 +7,7 @@ import SidebarPersonality from '../../components/sidebars/PersonalSidebar'
 import SidebarPlaylist from '../../components/sidebars/Sidebar'
 import Playingbar from '../../components/playingbar/Playingbar'
 import { useEffect, useState } from 'react'
+//import { getAllTracks } from '../../api'
 
 export function MainPage() {
   const [loading, setLoading] = useState(true)

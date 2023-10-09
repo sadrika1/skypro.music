@@ -1,23 +1,24 @@
 import { AppRoutes } from './routes'
 import { GlobalStyle } from './global.styles'
-// import { useState } from 'react'
-
-
+//import { getTracks } from './api'
+// import { useEffect, useState } from 'react'
 
 function App() {
-  // const [token, setToken] = useState(null)
-  // const handleLogin = () => {
-  //   setToken({ login: 'admin' })
-  // }
-  // const handleLogout = setToken(null)
+  // const [isAuth, setIsAuth] = useState(false);
 
+  // useEffect(() => {
+  //   if(localStorage.getItem('auth')) {
+  //     setIsAuth(true)
+  //   }
+  // }, [])
   return (
     <>
       <GlobalStyle />
- 
-      <AppRoutes  />
+      <AppRoutes />
     </>
   )
 }
 
 export default App
+
+
