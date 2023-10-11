@@ -8,15 +8,6 @@ import * as S from './navigation.styles'
   const menuClose = () => {
     setMenuActive(!menuActive)
   }
-  const [user, setUser] = useState(
-    localStorage.getItem('user') !== null
-  );
-
-  const handleLogout = () => {
-    localStorage.removeItem('user')
-    setUser(false)
-  }
-
   return (
     <S.MainNav>
       <S.NavLogo>
@@ -37,7 +28,7 @@ import * as S from './navigation.styles'
               <Link to="/myplaylist"><S.MenuLink>Мой плейлист</S.MenuLink></Link>
             </S.MenuItem>
             <S.MenuItem >
-              <Link to="/login" onClick={handleLogout}><S.MenuLink>Выйти</S.MenuLink></Link>
+              <Link to="/login"><S.MenuLink>Выйти</S.MenuLink></Link>
             </S.MenuItem>
           </S.MenuList>
         </S.NavMenu>

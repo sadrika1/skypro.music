@@ -1,18 +1,11 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import * as S from './loginpage.style'
 import { Link } from 'react-router-dom'
 
-
-export function Login() {
-  const [user, setUser] = useState(
-    localStorage.getItem('user') !== null
-  );
-
-  const handleLogin = () => {
-    localStorage.setItem('user'),
-    setUser(true)
-  };
-  
+export function Login({ handleLogin }) {
+  const login = () => {
+    handleLogin()
+  }
   return (
     <S.Wrapper>
       <S.MainLogin>
@@ -21,7 +14,7 @@ export function Login() {
           <S.ModalInput placeholder="Почта"></S.ModalInput>
           <S.ModalInput placeholder="Пароль"></S.ModalInput>
           <Link to="/home">
-            <S.LoginButton onClick={handleLogin}>Войти</S.LoginButton>
+            <S.LoginButton onClick={login}>Войти</S.LoginButton>
           </Link>
           <Link to="/register">
             <S.SinupButton>Зарегистрироваться</S.SinupButton>

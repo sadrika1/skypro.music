@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { SidebarArray } from '../../components/sidebars/constanst'
+import { SidebarArray } from '../../components/playlists/constanst'
 
 export function Category() {
   const params = useParams()

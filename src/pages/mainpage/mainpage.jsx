@@ -4,9 +4,9 @@ import Navigation from '../../components/nav/Navigation'
 import SongsInfo from '../../components/infosongs/SongsInfo'
 import Serching from '../../components/search/Searching'
 import SidebarPersonality from '../../components/sidebars/PersonalSidebar'
-import SidebarPlaylist from '../../components/sidebars/Sidebar'
 import Playingbar from '../../components/playingbar/Playingbar'
 import { useEffect, useState } from 'react'
+import Playlists from '../../components/playlists/Playlists'
 //import { getAllTracks } from '../../api'
 
 export function MainPage() {
@@ -87,7 +87,7 @@ export function MainPage() {
           </S.MainCentroBlock>
           <S.MainSidebar>
             <SidebarPersonality userName="Sergey.Ivanov" />
-            <SidebarPlaylist load={loading} />
+            <Playlists load={loading} />
           </S.MainSidebar>
         </S.Main>
         <Playingbar load={loading} />
