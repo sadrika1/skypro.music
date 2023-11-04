@@ -7,9 +7,17 @@ import SidebarPersonality from '../../components/sidebars/PersonalSidebar'
 import Playingbar from '../../components/playingbar/Playingbar'
 import { useEffect, useState } from 'react'
 import Playlists from '../../components/playlists/Playlists'
-//import { getAllTracks } from '../../api'
+import { getAllTracks } from '../../api'
 
-export function MainPage() {
+export function MainPage({ selectedTrack, setSelectedTrack }) {
+  const [tracks, setTracks] = useState([])
+  useEffect(() => {
+    getAllTracks().then((data) => {
+      console.log(data)
+      setTracks(data)
+    })
+  }, [])
+
   const [loading, setLoading] = useState(true)
   const isLoading = () => setLoading(!loading)
 
@@ -33,55 +41,15 @@ export function MainPage() {
             <S.CentroBlockContent>
               <SongsInfo />
               <S.PlaylistContent>
-                <PlaylistItem
-                  trackname="Knives n Cherries"
-                  author="minthaze"
-                  album="Captivating"
-                  timetrack="2:22"
-                  load={loading}
-                />
-                <PlaylistItem
-                  trackname="I'm Fire"
-                  author="Ali Bakgor"
-                  album="I'm Fire"
-                  timetrack="4:22"
-                  load={loading}
-                />
-                <PlaylistItem
-                  trackname="Non Stop"
-                  author="Psychopath"
-                  album="Non Stop"
-                  timetrack="3:12"
-                  load={loading}
-                />
-                <PlaylistItem
-                  trackname="Guilt"
-                  author="Nero"
-                  album="Welcome Reality"
-                  timetrack="2:46"
-                  load={loading}
-                />
-                <PlaylistItem
-                  trackname="Morena"
-                  author="Tom Boxer"
-                  album="Soundz Made in Romania"
-                  timetrack="2:54"
-                  load={loading}
-                />
-                <PlaylistItem
-                  trackname="How Deep Is Your Love"
-                  author="Calvin Harris, Disciples"
-                  album="How Deep Is Your Love"
-                  timetrack="2:22"
-                  load={loading}
-                />
-                <PlaylistItem
-                  trackname="Elektro"
-                  author="Dynoro, Outwork, Mr. Gee"
-                  album="Elektro"
-                  timetrack="2:22"
-                  load={loading}
-                />
+                {tracks.map((track) => {
+                  return (
+                    <PlaylistItem
+                      setSelectedTrack={setSelectedTrack}
+                      key={track.id}
+                      track={track}
+                    />
+                  )
+                })}
               </S.PlaylistContent>
             </S.CentroBlockContent>
           </S.MainCentroBlock>
@@ -90,8 +58,7 @@ export function MainPage() {
             <Playlists load={loading} />
           </S.MainSidebar>
         </S.Main>
-        <Playingbar load={loading} />
-        {/* <footer className="footer"></footer> */}
+        {selectedTrack && <Playingbar track={selectedTrack} />}
       </S.Container>
     </S.Wrapper>
   )

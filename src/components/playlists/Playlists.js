@@ -6,7 +6,7 @@ export default function Playlists(props) {
     <S.SidebarBlock>
       <S.SidebarList>
         <S.SidebarItem>
-          <Link to="/playlistpage/1">
+          <Link to="/category/1">
             {props.load ? (
               <S.SidebarLoad></S.SidebarLoad>
             ) : (
@@ -17,7 +17,7 @@ export default function Playlists(props) {
           </Link>
         </S.SidebarItem>
         <S.SidebarItem>
-          <Link to="/playlistpage/2">
+          <Link to="/category/2">
             {props.load ? (
               <S.SidebarLoad></S.SidebarLoad>
             ) : (
@@ -28,7 +28,7 @@ export default function Playlists(props) {
           </Link>
         </S.SidebarItem>
         <S.SidebarItem>
-          <Link to="/playlistpage/3">
+          <Link to="/category/3">
             {props.load ? (
               <S.SidebarLoad></S.SidebarLoad>
             ) : (

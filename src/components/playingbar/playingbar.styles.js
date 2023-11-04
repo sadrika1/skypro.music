@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 
 export const Bar = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -191,7 +191,7 @@ export const TrackPlayName = styled.div`
   grid-area: author;
   min-width: 49px;
 
-  & a {
+  & span {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -203,9 +203,9 @@ export const TrackPlayName = styled.div`
 `
 export const TrackPlayAuthor = styled.div`
   grid-area: album;
-  min-width: 49px;
+  min-width: 250px;
 
-  & a {
+  & span {
     font-style: normal;
     font-weight: 400;
     font-size: 13px;

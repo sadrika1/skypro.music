@@ -1,14 +1,18 @@
-//import { ThemeProvider } from 'styled-components'
 import * as S from './playingbar.styles'
 
 export default function Playingbar(props) {
+  const { track } = props;
+
+  if (!track) {
+    return null
+  }
+
   return (
     <S.Bar>
       <S.BarContent>
         <S.BarPlayerBProgress></S.BarPlayerBProgress>
         <S.BarPlayerBlock>
           <S.BarPlayer>
-
             <S.BarPLayerControls>
               {/* buttons on player */}
               <S.ButtonPrev>
@@ -39,26 +43,14 @@ export default function Playingbar(props) {
             </S.BarPLayerControls>
 
             <S.PlayerTrack>
-              <S.PlayerTrackContain> 
+              <S.PlayerTrackContain>
                 <S.PlayerTrackImage>
                   <svg alt="music">
                     <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                   </svg>
                 </S.PlayerTrackImage>
-                <S.TrackPlayName>
-                  {props.load ? (
-                    <S.TrackPlayLoad></S.TrackPlayLoad>
-                  ) : (
-                  <a href="http://">Ты та...</a>
-                  )}
-                </S.TrackPlayName>
-                <S.TrackPlayAuthor>
-                {props.load ? (
-                    <S.TrackPlayLoad></S.TrackPlayLoad>
-                  ) : (
-                  <a href="http://">Баста</a>
-                  )}
-                </S.TrackPlayAuthor>
+                <S.TrackPlayName><span>{track.name}</span></S.TrackPlayName>
+                <S.TrackPlayAuthor><span>{track.author}</span></S.TrackPlayAuthor>
               </S.PlayerTrackContain>
 
               <S.PlayerLikeButtons>
@@ -83,11 +75,7 @@ export default function Playingbar(props) {
                 </svg>
               </S.VolumeImage>
               <S.VolumeProgress className="_btn">
-                <input
-                  className="_btn"
-                  type="range"
-                  name="range"
-                />
+                <input className="_btn" type="range" name="range" />
               </S.VolumeProgress>
             </S.VolumeContent>
           </S.VolumeBlock>

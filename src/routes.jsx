@@ -8,7 +8,7 @@ import { Category } from './pages/playlists/sidebarplay'
 import { ProtectedRoute } from './protectedRoute'
 import { useState } from 'react'
 
-export function AppRoutes() {
+export function AppRoutes({ selectedTrack, setSelectedTrack }) {
   const [isAuth, setIsAuth] = useState(() => {
     const storedValue = localStorage.getItem('isAuth')
     return storedValue ? JSON.parse(storedValue) : false
@@ -25,25 +25,33 @@ export function AppRoutes() {
   }
 
   return (
-      <Routes>
+    <Routes>
+      <Route
+        element={
+          <ProtectedRoute
+            redirectPath="/login"
+            isAuth={isAuth}
+            handleLogout={handleLogout}
+          />
+        }
+      >
+        <Route path="/myplaylist" element={<FavoritesPage />} />
         <Route
+          path="/"
           element={
-            <ProtectedRoute
-              redirectPath="/login"
-              isAuth={isAuth}
-              handleLogout={handleLogout}
+            <MainPage
+              selectedTrack={selectedTrack}
+              setSelectedTrack={setSelectedTrack}
             />
           }
-        >
-          <Route path="/myplaylist" element={<FavoritesPage />} />
-          <Route path="/" element={<MainPage />} />
-          <Route path="/home" element={<MainPage />} />
-          <Route path="/category/:id" element={<Category />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-        <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+        />
+        <Route path="/home" element={<MainPage />} />
+        <Route path="/category/:id" element={<Category />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+      <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   )
 }
 
