@@ -50,7 +50,7 @@ export default function PlaylistItem({ load, setSelectedTrack, track }) {
           {load ? (
             <S.TrackTimeText>00:00</S.TrackTimeText>
           ) : (
-            <S.TrackTimeText>{track.timetrack}</S.TrackTimeText>
+            <S.TrackTimeText>{track.time}</S.TrackTimeText>
           )}
         </div>
       </S.PlaylistTrack>

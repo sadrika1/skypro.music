@@ -11,14 +11,24 @@ import { getAllTracks } from '../../api'
 
 export function MainPage({ selectedTrack, setSelectedTrack }) {
   const [tracks, setTracks] = useState([])
+  const [tracksError, setTracksError] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  // const getAllTracks = () => {
+  //   return new Promise((resolve, reject) => {
+  //     reject(new Error('Error fetching tracks'))
+  //   })
+  // }
+
   useEffect(() => {
     getAllTracks().then((data) => {
       console.log(data)
       setTracks(data)
+    }).catch((error) => {
+      setTracksError(error.message)
     })
   }, [])
 
-  const [loading, setLoading] = useState(true)
   const isLoading = () => setLoading(!loading)
 
   useEffect(() => {
@@ -40,17 +50,22 @@ export function MainPage({ selectedTrack, setSelectedTrack }) {
             <Serching />
             <S.CentroBlockContent>
               <SongsInfo />
-              <S.PlaylistContent>
-                {tracks.map((track) => {
-                  return (
-                    <PlaylistItem
-                      setSelectedTrack={setSelectedTrack}
-                      key={track.id}
-                      track={track}
-                    />
-                  )
-                })}
-              </S.PlaylistContent>
+              {tracksError ? (
+                <S.ErrorBlock>Не удалось загрузить плейлист, попробуйте позже!</S.ErrorBlock>
+              ) : (
+                <S.PlaylistContent>
+                  {tracks.map((track) => {
+                    return (
+                      <PlaylistItem
+                        setSelectedTrack={setSelectedTrack}
+                        key={track.id}
+                        track={track}
+                        load={loading}
+                      />
+                    )
+                  })}
+                </S.PlaylistContent>
+              )}
             </S.CentroBlockContent>
           </S.MainCentroBlock>
           <S.MainSidebar>
