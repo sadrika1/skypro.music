@@ -1,7 +1,25 @@
 import * as S from './playingbar.styles'
+import { BarPLayerControl, LikeDislike } from './controls.btn'
+import { useEffect, useRef, useState } from 'react';
 
-export default function Playingbar(props) {
-  const { track } = props;
+export default function Playingbar({ track }) {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef(null);
+ 
+  const handleStart = () => {
+    audioRef.current.play();
+    setIsPlaying(true);
+  };
+  const handleStop = () => {
+    audioRef.current.pause();
+    setIsPlaying(false);
+  };
+
+  const togglePlay = isPlaying ? handleStop : handleStart;
+
+  useEffect(() => {
+    setIsPlaying(true);
+  }, [track]);
 
   if (!track) {
     return null
@@ -13,34 +31,12 @@ export default function Playingbar(props) {
         <S.BarPlayerBProgress></S.BarPlayerBProgress>
         <S.BarPlayerBlock>
           <S.BarPlayer>
-            <S.BarPLayerControls>
-              {/* buttons on player */}
-              <S.ButtonPrev>
-                <svg alt="prev">
-                  <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
-                </svg>
-              </S.ButtonPrev>
-              <S.ButtonPlay>
-                <svg alt="play">
-                  <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
-                </svg>
-              </S.ButtonPlay>
-              <S.ButtonNext>
-                <svg alt="next">
-                  <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
-                </svg>
-              </S.ButtonNext>
-              <S.ButtonRepeat>
-                <svg alt="repeat">
-                  <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
-                </svg>
-              </S.ButtonRepeat>
-              <S.ButtonShuffle>
-                <svg alt="shuffle">
-                  <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
-                </svg>
-              </S.ButtonShuffle>
-            </S.BarPLayerControls>
+            <audio 
+            autoPlay
+            src={track.track_file}
+            ref={audioRef}
+            ></audio>
+            <BarPLayerControl togglePlay={togglePlay} isPlaying={isPlaying}/>
 
             <S.PlayerTrack>
               <S.PlayerTrackContain>
@@ -49,24 +45,17 @@ export default function Playingbar(props) {
                     <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                   </svg>
                 </S.PlayerTrackImage>
-                <S.TrackPlayName><span>{track.name}</span></S.TrackPlayName>
-                <S.TrackPlayAuthor><span>{track.author}</span></S.TrackPlayAuthor>
+                <S.TrackPlayName>
+                  <span>{track.name}</span>
+                </S.TrackPlayName>
+                <S.TrackPlayAuthor>
+                  <span>{track.author}</span>
+                </S.TrackPlayAuthor>
               </S.PlayerTrackContain>
-
-              <S.PlayerLikeButtons>
-                <S.LikeButtonIcon>
-                  <svg alt="like">
-                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                  </svg>
-                </S.LikeButtonIcon>
-                <S.DislikeButtonIcon>
-                  <svg alt="dislike">
-                    <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
-                  </svg>
-                </S.DislikeButtonIcon>
-              </S.PlayerLikeButtons>
+              <LikeDislike />
             </S.PlayerTrack>
           </S.BarPlayer>
+
           <S.VolumeBlock>
             <S.VolumeContent>
               <S.VolumeImage>
