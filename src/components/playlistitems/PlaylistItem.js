@@ -2,7 +2,7 @@ import * as S from './PlaylistItem.styles'
 // import { getAllTracks } from '../../api'
 // import { useState, useEffect } from 'react'
 
-export default function PlaylistItem({ load, setSelectedTrack, track }) {
+export default function PlaylistItem({ load, setSelectedTrack, track, time }) {
   return (
     <S.PlaylistItem>
       <S.PlaylistTrack onClick={() => setSelectedTrack(track)}>
@@ -50,7 +50,7 @@ export default function PlaylistItem({ load, setSelectedTrack, track }) {
           {load ? (
             <S.TrackTimeText>00:00</S.TrackTimeText>
           ) : (
-            <S.TrackTimeText>{track.time}</S.TrackTimeText>
+            <S.TrackTimeText>{time}</S.TrackTimeText>
           )}
         </div>
       </S.PlaylistTrack>

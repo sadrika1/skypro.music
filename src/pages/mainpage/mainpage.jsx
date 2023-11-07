@@ -12,23 +12,18 @@ import { getAllTracks } from '../../api'
 export function MainPage({ selectedTrack, setSelectedTrack }) {
   const [tracks, setTracks] = useState([])
   const [tracksError, setTracksError] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  // const getAllTracks = () => {
-  //   return new Promise((resolve, reject) => {
-  //     reject(new Error('Error fetching tracks'))
-  //   })
-  // }
-
   useEffect(() => {
-    getAllTracks().then((data) => {
-      console.log(data)
-      setTracks(data)
-    }).catch((error) => {
-      setTracksError(error.message)
-    })
+    getAllTracks()
+      .then((data) => {
+        console.log(data)
+        setTracks(data)
+      })
+      .catch((error) => {
+        setTracksError(error.message)
+      })
   }, [])
 
+  const [loading, setLoading] = useState(true)
   const isLoading = () => setLoading(!loading)
 
   useEffect(() => {
@@ -51,7 +46,7 @@ export function MainPage({ selectedTrack, setSelectedTrack }) {
             <S.CentroBlockContent>
               <SongsInfo />
               {tracksError ? (
-                <S.ErrorBlock>Не удалось загрузить плейлист, попробуйте позже!</S.ErrorBlock>
+                <div>Не удалось загрузить плейслист, попробуйте позже</div>
               ) : (
                 <S.PlaylistContent>
                   {tracks.map((track) => {
@@ -61,6 +56,7 @@ export function MainPage({ selectedTrack, setSelectedTrack }) {
                         key={track.id}
                         track={track}
                         load={loading}
+                        time={track.duration_in_seconds}
                       />
                     )
                   })}

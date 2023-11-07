@@ -17,7 +17,6 @@ export const Main = styled.main`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  height: 100vh;
 `
 export const MainCentroBlock = styled.div`
   width: auto;
@@ -27,25 +26,14 @@ export const MainCentroBlock = styled.div`
 export const CentroBlockContent = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
 `
 export const PlaylistContent = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  margin-bottom: 100px;
+  margin-bottom: 100px
 `
 export const MainSidebar = styled.div`
   max-width: 418px;
   padding: 20px 90px 20px 78px;
-`
-export const ErrorBlock = styled.div`
-  display: flex;
-  justify-content: center;
-  color: #696969;
-  font-family: StratosSkyeng;
-  font-size: 23px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 64px;
 `
