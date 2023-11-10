@@ -55,18 +55,40 @@ export const VolumeImage = styled.div`
   height: 18px;
   margin-right: 17px;
   & svg {
-    width: 13px;
+    width: 18px;
     height: 18px;
     fill: transparent;
   }
 `
 export const VolumeProgress = styled.div`
   width: 109px;
-
   & input {
     width: 109px;
   }
 `
+
+//   & input {
+//     width: 139px;
+//     height: 18px;
+//     flex-shrink: 0;
+//   }
+
+//   & input::-webkit-slider-thumb {
+//     -webkit-appearance: none;
+//     appearance: none;
+//     width: 23px;
+//     height: 24px;
+//     border: 0;
+//     background: url('/img/range.svg');
+//     cursor: pointer;
+//   }
+//   & input::-moz-range-thumb {
+//     width: 23px;
+//     height: 25px;
+//     border: 0;
+//     background: url('/img/range.svg');
+//     cursor: pointer;
+//   }`
 
 // buttons on player
 export const BarPLayerControls = styled.div`

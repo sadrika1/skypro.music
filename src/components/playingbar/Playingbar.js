@@ -2,12 +2,14 @@ import * as S from './playingbar.styles'
 import { BarPLayerControl, LikeDislike } from './controls.btn'
 import { useEffect, useRef, useState } from 'react'
 import ProgressBar from './progressbar/progressbar'
+import VolumeProgressBlock from './volume/volumeblock'
 
 export default function Playingbar({ track }) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoop, setIsLoop] = useState(false)
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
+  const [volume, setVolume] = useState(30)
 
   const audioRef = useRef(null)
 
@@ -38,6 +40,11 @@ export default function Playingbar({ track }) {
   const handleSeekTrackTime = (e) => {
     audioRef.current.currentTime = e.target.value
     setCurrentTime(e.target.value)
+  }
+
+  const handleVolumeChange = (shiftVolume) => {
+    setVolume(shiftVolume)
+    audioRef.current.volume = shiftVolume / 100
   }
 
   if (!track) {
@@ -94,9 +101,7 @@ export default function Playingbar({ track }) {
                     <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
                   </svg>
                 </S.VolumeImage>
-                <S.VolumeProgress className="_btn">
-                  <input className="_btn" type="range" name="range" />
-                </S.VolumeProgress>
+                <VolumeProgressBlock volume={volume} onVolumeChange={handleVolumeChange} />
               </S.VolumeContent>
             </S.VolumeBlock>
           </S.BarPlayerBlock>
