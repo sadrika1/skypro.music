@@ -45,7 +45,6 @@ export function AppRoutes({ selectedTrack, setSelectedTrack }) {
             />
           }
         />
-        <Route path="/home" element={<MainPage />} />
         <Route path="/category/:id" element={<Category />} />
       </Route>
       <Route path="*" element={<NotFound />} />
