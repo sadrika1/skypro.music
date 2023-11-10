@@ -5,15 +5,23 @@ export const Bar = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(28, 28, 28, 0.5);
 `
+
 export const BarContent = styled.div`
   display: flex;
   flex-direction: column;
 `
+export const BarTime = styled.div`
+  text-align: right;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 5px 10px 10px;
+`
+
 export const BarPlayerBProgress = styled.div`
   width: 100%;
-  height: 5px;
+  height: 10px;
   background: #2e2e2e;
 `
 export const BarPlayerBlock = styled.div`
@@ -21,6 +29,7 @@ export const BarPlayerBlock = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background: rgba(28, 28, 28);
 `
 export const BarPlayer = styled.div`
   display: flex;
@@ -74,7 +83,7 @@ export const ButtonPrev = styled.div`
 
   & svg {
     width: 15px;
-    height: 14px;
+    height: 20px;
   }
 `
 export const ButtonPlay = styled.div`
@@ -99,7 +108,7 @@ export const ButtonNext = styled.div`
 
   & svg {
     width: 15px;
-    height: 14px;
+    height: 20px;
     fill: inherit;
     stroke: #d9d9d9;
   }
@@ -113,7 +122,7 @@ export const ButtonRepeat = styled.div`
 
   & svg {
     width: 18px;
-    height: 12px;
+    height: 19px;
     fill: transparent;
     stroke: #696969;
   }
@@ -126,7 +135,7 @@ export const ButtonShuffle = styled.div`
 
   & svg {
     width: 19px;
-    height: 12px;
+    height: 16px;
     fill: transparent;
     stroke: #696969;
   }
@@ -171,8 +180,8 @@ export const LikeButtonIcon = styled.div`
   padding: 5px;
 
   & svg {
-    width: 14px;
-    height: 12px;
+    width: 15px;
+    height: 20px;
     fill: transparent;
     stroke: #696969;
   }
@@ -181,8 +190,8 @@ export const DislikeButtonIcon = styled.div`
   margin-left: 28.5px;
 
   & svg {
-    width: 14.34px;
-    height: 13px;
+    width: 15px;
+    height: 20px;
     fill: transparent;
     stroke: #696969;
   }

@@ -1,6 +1,11 @@
 import * as S from './playingbar.styles'
 
-export const BarPLayerControl = ({ togglePlay, isPlaying }) => {
+export const BarPLayerControl = ({
+  togglePlay,
+  isPlaying,
+  toggleLoop,
+  isLoop,
+}) => {
   return (
     <S.BarPLayerControls>
       <S.ButtonPrev onClick={() => alert('in progress')}>
@@ -24,9 +29,13 @@ export const BarPLayerControl = ({ togglePlay, isPlaying }) => {
           <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
         </svg>
       </S.ButtonNext>
-      <S.ButtonRepeat>
-        <svg alt="repeat">
-          <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
+      <S.ButtonRepeat onClick={toggleLoop}>
+        <svg alt="repeat" >
+          {isLoop ? (
+            <use xlinkHref="img/icon/sprite.svg#icon-repeat-active"></use>
+          ) : (
+            <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
+          )}
         </svg>
       </S.ButtonRepeat>
       <S.ButtonShuffle>
