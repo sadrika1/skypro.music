@@ -1,16 +1,17 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 `
 export const Container = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   position: relative;
   background-color: #181818;
+  overflow-y: scroll;
 `
 export const Main = styled.main`
   flex: 1 1 auto;

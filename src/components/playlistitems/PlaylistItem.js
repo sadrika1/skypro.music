@@ -2,7 +2,12 @@ import * as S from './PlaylistItem.styles'
 // import { getAllTracks } from '../../api'
 // import { useState, useEffect } from 'react'
 
-export default function PlaylistItem({ load, setSelectedTrack, track, time }) {
+export default function PlaylistItem({ load, setSelectedTrack, track }) {
+  let sec = track.duration_in_seconds % 60;
+  if (sec < 10) {
+    sec = "0" + sec;
+  }
+  let min = ~~(track.duration_in_seconds / 60);
   return (
     <S.PlaylistItem>
       <S.PlaylistTrack onClick={() => setSelectedTrack(track)}>
@@ -50,7 +55,7 @@ export default function PlaylistItem({ load, setSelectedTrack, track, time }) {
           {load ? (
             <S.TrackTimeText>00:00</S.TrackTimeText>
           ) : (
-            <S.TrackTimeText>{time}</S.TrackTimeText>
+            <S.TrackTimeText>{min}:{sec}</S.TrackTimeText>
           )}
         </div>
       </S.PlaylistTrack>

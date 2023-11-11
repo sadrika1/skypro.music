@@ -37,7 +37,7 @@ export function AppRoutes({ selectedTrack, setSelectedTrack }) {
       >
         <Route path="/myplaylist" element={<FavoritesPage />} />
         <Route
-          path="/"
+          path="/home"
           element={
             <MainPage
               selectedTrack={selectedTrack}

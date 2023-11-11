@@ -45,6 +45,7 @@ export const CentroBlockSearch = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-top: 20px;
 `
 
 export const CentroBlockTitle = styled.h2`
