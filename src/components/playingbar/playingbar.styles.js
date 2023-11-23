@@ -146,7 +146,6 @@ export const ButtonRepeat = styled.div`
     width: 18px;
     height: 19px;
     fill: transparent;
-    stroke: #696969;
   }
 `
 
@@ -159,7 +158,6 @@ export const ButtonShuffle = styled.div`
     width: 19px;
     height: 16px;
     fill: transparent;
-    stroke: #696969;
   }
 `
 // playing track styles

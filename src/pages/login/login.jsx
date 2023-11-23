@@ -12,7 +12,7 @@ export function Login({ handleLogin }) {
           <S.Logo src="img/logo_modal.png" alt="Logo"></S.Logo>
           <S.ModalInput placeholder="Почта"></S.ModalInput>
           <S.ModalInput placeholder="Пароль"></S.ModalInput>
-          <Link to="/home">
+          <Link to="/">
             <S.LoginButton onClick={login}>Войти</S.LoginButton>
           </Link>
           <Link to="/register">

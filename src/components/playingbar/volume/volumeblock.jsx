@@ -7,7 +7,7 @@ export const VolumeProgressLineInput = styled.input.attrs({type: 'range'})`
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: 0;
-  height: 10px;
+  height: 7px;
   background: ${(props) => 
   `linear-gradient(to right, 
     #fff,
@@ -18,9 +18,9 @@ export const VolumeProgressLineInput = styled.input.attrs({type: 'range'})`
 
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 24px;
-      height: 24px;
-      background-image: radial-gradient(circle, #000 50%, #fff 45%);
+      width: 20px;
+      height: 20px;
+      background-image: radial-gradient(circle, #000 50%, #fff 55%);
       border-radius: 50%;
     }
 `

@@ -11,10 +11,16 @@ export const Container = styled.div`
   margin: 0 auto;
   position: relative;
   background-color: #181818;
-  overflow-y: scroll;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
 `
 export const Main = styled.main`
-  flex: 1 1 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
