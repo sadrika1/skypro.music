@@ -8,8 +8,10 @@ import Playingbar from '../../components/playingbar/Playingbar'
 import { useEffect, useState } from 'react'
 import Playlists from '../../components/playlists/Playlists'
 import { getAllTracks } from '../../api'
+import { useAuthContext } from '../../context/context'
 
 export function MainPage({ selectedTrack, setSelectedTrack }) {
+  const {user} = useAuthContext()
   const [tracks, setTracks] = useState([])
   const [tracksError, setTracksError] = useState(null)
   useEffect(() => {
@@ -65,7 +67,7 @@ export function MainPage({ selectedTrack, setSelectedTrack }) {
             </S.CentroBlockContent>
           </S.MainCentroBlock>
           <S.MainSidebar>
-            <SidebarPersonality userName="Sergey.Ivanov" />
+            <SidebarPersonality user={user.email}/>
             <Playlists load={loading} />
           </S.MainSidebar>
         </S.Main>

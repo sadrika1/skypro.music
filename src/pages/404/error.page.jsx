@@ -12,7 +12,7 @@ export const NotFound = () => {
             <S.CryingImg src="img/crying.svg" />
           </S.ErrorMessage>
           <S.AnotherErrorMessage>Возможно, она была удалена или перенесена на другой адрес</S.AnotherErrorMessage>
-          <Link to="/home"><S.ReturnButton>Вернуться на главную</S.ReturnButton></Link>
+          <Link to="/"><S.ReturnButton>Вернуться на главную</S.ReturnButton></Link>
         </S.ErrorBlock>
       </S.MainErrorPage>
     </S.Wrapper>

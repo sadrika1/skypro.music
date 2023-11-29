@@ -10,7 +10,7 @@ export const MainLogin = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #181818;
-  display:flex;
+  display: flex;
   align-items: center;
 `
 
@@ -37,6 +37,9 @@ export const ModalInput = styled.input`
   width: 278px;
   padding-top: 35px;
   padding-bottom: 10px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 1.1rem;
 
   &::placeholder {
     font-style: normal;
@@ -67,7 +70,7 @@ export const LoginButton = styled.button`
     background-color: #271a58;
   }
 `
-export const SinupButton = styled.button`
+export const SingupButton = styled.button`
   width: 278px;
   height: 52px;
   border-radius: 10px;
@@ -84,4 +87,10 @@ export const SinupButton = styled.button`
   &:active {
     background-color: #d0cece;
   }
+`
+export const Error = styled.div`
+  color: coral;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
 `
