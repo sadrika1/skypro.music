@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   const loginUser = async ({ email, password }) => {
     try {
       const userData = await fetchLogin({ email, password })
-      localStorage.setItem('userData', JSON.stryngify(userData))
+      localStorage.setItem('userData', JSON.stringify(userData))
       setUser(userData)
       setError(null)
     } catch (error) {

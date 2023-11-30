@@ -8,194 +8,160 @@ export function Login() {
   const { setUser, loginUser } = useAuthContext()
 
   const [error, setError] = useState(null)
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
-  const [email, setEmail] = useState('')
-  const [username, setUsername] = useState('')
+  const [userName, setUserName] = useState('')
   const [isLoginMode, setIsLoginMode] = useState(true)
-  const [isAuthLoad, setIsAuthLoad] = useState(false)
+  const [isAuthLoading, setIsAuthLoading] = useState(false)
 
-  const navigate = useNavigate()
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     setIsLoginMode(location.pathname === '/login')
   }, [location.pathname, isLoginMode])
 
-  const handleAuth = async () => {
-    if (isLoginMode) {
-      if (!email || !password) {
-        setError('Введите логин или пароль!')
-        return
-      }
-      try {
-        setIsAuthLoad(true)
-        await loginUser({ email, password })
-        setIsAuthLoad(false)
-        navigate('/', { replace: true })
-      } catch (error) {
-        setError(error.message)
-        setIsAuthLoad(false)
-      }
-    } else {
-      if (!email || !password) setError('Заполните обязательные поля')
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setError('Пожалуйста, введите пароль и/или логин')
       return
     }
-    if (repeatPassword !== repeatPassword) {
+    try {
+      setIsAuthLoading(true)
+      await loginUser({ email, password })
+      setIsAuthLoading(false)
+      navigate('/', { replace: true })
+    } catch (error) {
+      console.error('Ошибка авторизации:', error)
+      setError(error.message)
+      setIsAuthLoading(false)
+    }
+  }
+
+  const handleRegister = async () => {
+    if (!email || !password) {
+      setError('Не заполнены обязательные поля (Имя, почта, пароль)')
+      return
+    }
+    if (repeatPassword !== password) {
       setError('Пароли не совпадают')
       return
     }
     try {
-      setIsAuthLoad(true)
-      const userData = await fetchRegister({ email, password, username })
+      setIsAuthLoading(true)
+      const userData = fetchRegister({ email, password, userName })
+      console.log(userData)
       localStorage.setItem('userData', JSON.stringify(userData))
       setIsLoginMode(true)
       setUser(userData)
       setError(null)
-      setIsAuthLoad(false)
+      setIsAuthLoading(false)
       navigate('/', { replace: true })
     } catch (error) {
-      setError(error.message || 'Ошибка регистрации')
-      setIsAuthLoad(false)
+      console.error('Ошибка регистрации:', error)
+      setError(error.message || 'Неизвестная ошибка регистрации')
+      setIsAuthLoading(false)
     }
   }
 
-  // const handleLogin = async ({ email, password }) => {
-  //   if (!email || !password) {
-  //     setError('Введите логин или пароль')
-  //     return;
-  //   }
-  //   try {
-  //     setIsAuthLoad(true)
-  //     await loginUser({ email, password })
-  //     setIsAuthLoad(false)
-  //     navigate('/', {replace: true})
-  //   } catch (error) {
-  //     console.log(email, password);
-  //     navigate('/', {replace: true})
-  //     setError(error.message)
-  //     setIsAuthLoad(false)
-  //   }
-  // }
-
-  // const handleRegister = async () => {
-  //   if (!email || !password) {
-  //     setError('Пожалуйста, заполните обязательные поля');
-  //     return
-  //   }
-  //   if (repeatPassword !== password) {
-  //     setError('Пароли не совпадают')
-  //     return
-  //   }
-  //   try {
-  //     setIsAuthLoad(true)
-  //     const userData = await fetchRegister({email, password})
-  //     localStorage.setItem('userData', JSON.stryngify(userData))
-  //     setIsLoginMode(true)
-  //     setUser(userData)
-  //     setError(null)
-  //     setIsAuthLoad(false)
-  //     navigate('/', {replace: true})
-  //   } catch (error) {
-  //     setError(error.message || 'Ошибка регистрации')
-  //   }
-  //   setError('ошибка регистации')
-  // }
-  // сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
+  // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
   useEffect(() => {
     setError(null)
   }, [isLoginMode, email, password, repeatPassword])
 
   return (
-    <S.Wrapper>
-      <S.MainLogin>
-        <S.ModalLogin>
-          <Link to="/login">
-            <S.Logo src="img/logo_modal.png" alt="Logo"></S.Logo>
-          </Link>
-          {isLoginMode ? (
-            <>
+    <S.PageContainer>
+      <S.ModalForm>
+        <Link to="/login">
+          <S.ModalLogo>
+            <S.ModalLogoImage src="./img/logo-black.png" alt="logo" />
+          </S.ModalLogo>
+        </Link>
+        {isLoginMode ? (
+          <>
+            <S.Inputs>
               <S.ModalInput
-                placeholder="Имя пользователя"
                 type="text"
-                name="username"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-              />
-              <S.ModalInput
-                placeholder="Почта"
-                type="email"
                 name="login"
+                placeholder="Почта"
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value)
                 }}
               />
               <S.ModalInput
-                placeholder="Пароль"
                 type="password"
                 name="password"
+                placeholder="Пароль"
                 value={password}
                 onChange={(event) => {
                   setPassword(event.target.value)
                 }}
               />
-              {error && <S.Error>{error}</S.Error>}
-              <S.LoginButton onClick={handleAuth} disabled={isAuthLoad}>
+            </S.Inputs>
+            {error && <S.Error>{error}</S.Error>}
+            <S.Buttons>
+              <S.PrimaryButton
+                onClick={() => handleLogin({ email, password })}
+                disabled={isAuthLoading}
+              >
                 Войти
-              </S.LoginButton>
+              </S.PrimaryButton>
               <Link to="/register">
-                <S.SingupButton >
-                  Зарегистрироваться
-                </S.SingupButton>
+                <S.SecondaryButton>Зарегистрироваться</S.SecondaryButton>
               </Link>
-            </>
-          ) : (
-            <>
+            </S.Buttons>
+          </>
+        ) : (
+          <>
+            <S.Inputs>
               <S.ModalInput
-                placeholder="Имя пользователя"
                 type="text"
-                name="username"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
+                name="name"
+                placeholder="Имя"
+                value={userName}
+                onChange={(event) => {
+                  setUserName(event.target.value)
+                }}
               />
               <S.ModalInput
-                placeholder="Почта"
-                type="email"
+                type="text"
                 name="login"
+                placeholder="Почта"
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value)
                 }}
               />
               <S.ModalInput
-                placeholder="Пароль"
                 type="password"
                 name="password"
+                placeholder="Пароль"
                 value={password}
                 onChange={(event) => {
                   setPassword(event.target.value)
                 }}
               />
               <S.ModalInput
-                placeholder="Повторите пароль"
                 type="password"
-                name="password"
+                name="repeat-password"
+                placeholder="Повторите пароль"
                 value={repeatPassword}
                 onChange={(event) => {
                   setRepeatPassword(event.target.value)
                 }}
               />
-              {error && <S.Error>{error}</S.Error>}
-              <Link to="/register">
-                <S.SingupButton onClick={handleAuth}>
-                  Зарегистрироваться
-                </S.SingupButton>
-              </Link>
-            </>
-          )}
-        </S.ModalLogin>
-      </S.MainLogin>
-    </S.Wrapper>
+            </S.Inputs>
+            {error && <S.Error>{error}</S.Error>}
+            <S.Buttons>
+              <S.PrimaryButton onClick={handleRegister}>
+                Зарегистрироваться
+              </S.PrimaryButton>
+            </S.Buttons>
+          </>
+        )}
+      </S.ModalForm>
+    </S.PageContainer>
   )
 }

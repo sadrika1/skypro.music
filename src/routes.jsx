@@ -12,8 +12,8 @@ export function AppRoutes({ selectedTrack, setSelectedTrack }) {
 
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Login />} />
+      <Route path="/login" element={<Login isLoginMode={true}/>} />
+      <Route path="/register" element={<Login isLoginMode={false}/>} />
       <Route element={<ProtectedRoute isAuth={Boolean(user)} />}>
         <Route
           path="/"
