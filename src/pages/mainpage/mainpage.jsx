@@ -67,7 +67,7 @@ export function MainPage({ selectedTrack, setSelectedTrack }) {
             </S.CentroBlockContent>
           </S.MainCentroBlock>
           <S.MainSidebar>
-            <SidebarPersonality user={user.email}/>
+            <SidebarPersonality>{user.username}</SidebarPersonality>
             <Playlists load={loading} />
           </S.MainSidebar>
         </S.Main>

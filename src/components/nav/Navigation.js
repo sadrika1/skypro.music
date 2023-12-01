@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import * as S from './navigation.styles'
+import { useAuthContext } from '../../context/context';
 
 
  const Navigation = () => {
+  const {logoutUser} = useAuthContext()
   const [menuActive, setMenuActive] = useState(false) // по дефолту меню закрыто
   const menuClose = () => {
     setMenuActive(!menuActive)
@@ -27,7 +29,7 @@ import * as S from './navigation.styles'
             <S.MenuItem >
               <Link to="/myplaylist"><S.MenuLink>Мой плейлист</S.MenuLink></Link>
             </S.MenuItem>
-            <S.MenuItem >
+            <S.MenuItem onClick={logoutUser}>
               <Link to="/login"><S.MenuLink>Выйти</S.MenuLink></Link>
             </S.MenuItem>
           </S.MenuList>

@@ -50,7 +50,9 @@ export function Login() {
     }
     try {
       setIsAuthLoading(true)
-      const userData = fetchRegister({ email, password, userName })
+      const userNameLowerCase = userName.toLowerCase()
+      const userData = await fetchRegister({ email, password, userNameLowerCase })
+      console.log(userNameLowerCase);
       console.log(userData)
       localStorage.setItem('userData', JSON.stringify(userData))
       setIsLoginMode(true)
@@ -68,14 +70,14 @@ export function Login() {
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
   useEffect(() => {
     setError(null)
-  }, [isLoginMode, email, password, repeatPassword])
+  }, [isLoginMode, email, password, repeatPassword, userName])
 
   return (
     <S.PageContainer>
       <S.ModalForm>
         <Link to="/login">
           <S.ModalLogo>
-            <S.ModalLogoImage src="./img/logo-black.png" alt="logo" />
+            <S.ModalLogoImage src="./img/logo_modal.png" alt="logo" />
           </S.ModalLogo>
         </Link>
         {isLoginMode ? (
@@ -118,7 +120,7 @@ export function Login() {
             <S.Inputs>
               <S.ModalInput
                 type="text"
-                name="name"
+                name="username"
                 placeholder="Имя"
                 value={userName}
                 onChange={(event) => {

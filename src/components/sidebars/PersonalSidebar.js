@@ -1,14 +1,19 @@
 import styled from 'styled-components'
+import { useAuthContext } from '../../context/context'
+import { Link } from 'react-router-dom'
 
-export default function SidebarPersonality(props) {
+export default function SidebarPersonality() {
+  const { user, logoutUser } = useAuthContext()
   return (
     <SidebarPersonal>
-      <SidebarPersonalName>{props.userName}</SidebarPersonalName>
-      <SidebarIcon >
-        <svg alt="logout">
-          <use xlinkHref="img/icon/sprite.svg#logout"></use>
-        </svg>
-      </SidebarIcon>
+      <SidebarPersonalName>{user.username}</SidebarPersonalName>
+      <LogoutBtn onClick={logoutUser}>
+        <Link to="/login">
+          <SidebarIcon alt="logout">
+            <use xlinkHref="img/icon/sprite.svg#logout"></use>
+          </SidebarIcon>
+        </Link>
+      </LogoutBtn>
     </SidebarPersonal>
   )
 }
@@ -37,10 +42,12 @@ const SidebarPersonalName = styled.p`
   color: #ffffff;
   margin-right: 16px;
 `
-const SidebarIcon = styled.div`
+const SidebarIcon = styled.svg`
   width: 43px;
   height: 43px;
   background-color: #313131;
   border-radius: 50%;
   cursor: pointer;
 `
+
+const LogoutBtn = styled.div``
