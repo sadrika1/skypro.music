@@ -50,9 +50,7 @@ export function Login() {
     }
     try {
       setIsAuthLoading(true)
-      const userNameLowerCase = userName.toLowerCase()
-      const userData = await fetchRegister({ email, password, userNameLowerCase })
-      console.log(userNameLowerCase);
+      const userData = await fetchRegister({ email, password, userName })
       console.log(userData)
       localStorage.setItem('userData', JSON.stringify(userData))
       setIsLoginMode(true)
