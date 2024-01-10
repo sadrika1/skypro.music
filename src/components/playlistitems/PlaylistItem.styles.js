@@ -131,3 +131,27 @@ export const TrackAlbumLoad = styled.div`
   height: 19px;
   animation: ${loading} 2s infinite;
 `
+//анимация играющего трека
+const pulseAnimation = keyframes`
+0% {
+  transform: scale(0.25);
+  box-shadow: 0 0 0 0 rgba(173, 65, 255, 0.7);
+}
+50% {
+  transform: scale(0.55);
+  box-shadow: 0 0 0 10px rgba(173, 65, 255, 0);
+}
+100% {
+  transform: scale(0.25);
+  box-shadow: 0 0 0 0 rgba(173, 65, 255, 0.7);
+}
+`
+
+export const AnimationPlay = styled.div`
+  animation: ${pulseAnimation} 1.5s infinite;
+  border-radius: 50%;
+  // width: 55px;
+  // height: 55px;
+  ${(props) => props.$isPlaying === true ? pulseAnimation : ''}
+  background-color: rgba(173, 65, 255, 0.7);
+`

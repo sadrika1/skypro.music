@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import ProgressBar from './progressbar/progressbar'
 import VolumeProgressBlock from './volume/volumeblock'
 
-export default function Playingbar({ track }) {
+export default function Playingbar({track}) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoop, setIsLoop] = useState(false)
   const [duration, setDuration] = useState(0)

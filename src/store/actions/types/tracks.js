@@ -1,0 +1,8 @@
+export const SELECT_TRACK = 'SELECT_TRACK'
+export const PLAY_TRACK = 'PLAY_TRACK'
+export const PAUSE_TRACK = 'PAUSE_TRACK'
+export const NEXT_TRACK = 'NEXT_TRACK'
+export const PREV_TRACK = 'PREV_TRACK'
+export const SHUFFLE_PLAYLIST = 'SHUFFLE_PLAYLIST'
+export const LOOP_TRACK = 'LOOP_TRACK'
+export const GET_TRACKS = 'GET_TRACKS'

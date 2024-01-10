@@ -1,19 +1,27 @@
+import { useDispatch, useSelector } from 'react-redux'
 import * as S from './PlaylistItem.styles'
-// import { getAllTracks } from '../../api'
-// import { useState, useEffect } from 'react'
+import { selectSelectedTrack } from '../../store/selectors/tracks'
+import { selectTrack } from '../../store/actions/creators/tracks'
 
-export default function PlaylistItem({ load, setSelectedTrack, track }) {
-  let sec = track.duration_in_seconds % 60;
-  if (sec < 10) {
-    sec = "0" + sec;
+export default function PlaylistItem({ load, track }) {
+  const dispatch = useDispatch()
+  const selectedTrack = useSelector(selectSelectedTrack)
+  const handleSelectTrack = (track) => {
+    dispatch(selectTrack(track))
   }
-  let min = ~~(track.duration_in_seconds / 60);
+
+  let sec = track.duration_in_seconds % 60
+  if (sec < 10) {
+    sec = '0' + sec
+  }
+  let min = ~~(track.duration_in_seconds / 60)
+
   return (
     <S.PlaylistItem>
-      <S.PlaylistTrack onClick={() => setSelectedTrack(track)}>
+      <S.PlaylistTrack onClick={() => handleSelectTrack(track)}>
         <S.TrackTitle>
           {load ? (
-            <S.TrackImageLoad></S.TrackImageLoad>
+            <S.TrackImageLoad />
           ) : (
             <S.TrackTitleImage>
               <S.TrackTitleSVG alt="music">
@@ -55,7 +63,9 @@ export default function PlaylistItem({ load, setSelectedTrack, track }) {
           {load ? (
             <S.TrackTimeText>00:00</S.TrackTimeText>
           ) : (
-            <S.TrackTimeText>{min}:{sec}</S.TrackTimeText>
+            <S.TrackTimeText>
+              {min}:{sec}
+            </S.TrackTimeText>
           )}
         </div>
       </S.PlaylistTrack>

@@ -14,10 +14,10 @@ export function MainPage({ selectedTrack, setSelectedTrack }) {
   const {user} = useAuthContext()
   const [tracks, setTracks] = useState([])
   const [tracksError, setTracksError] = useState(null)
+
   useEffect(() => {
     getAllTracks()
       .then((data) => {
-        console.log(data)
         setTracks(data)
       })
       .catch((error) => {
